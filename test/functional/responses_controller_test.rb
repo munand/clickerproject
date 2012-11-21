@@ -18,30 +18,30 @@ class ResponsesControllerTest < ActionController::TestCase
 
   test "should create response" do
     assert_difference('Response.count') do
-      post :create, :response => @response.attributes
+      post :create, response: { answer: @response.answer, question_id: @response.question_id, user_id: @response.user_id }
     end
 
     assert_redirected_to response_path(assigns(:response))
   end
 
   test "should show response" do
-    get :show, :id => @response.to_param
+    get :show, id: @response
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @response.to_param
+    get :edit, id: @response
     assert_response :success
   end
 
   test "should update response" do
-    put :update, :id => @response.to_param, :response => @response.attributes
+    put :update, id: @response, response: { answer: @response.answer, question_id: @response.question_id, user_id: @response.user_id }
     assert_redirected_to response_path(assigns(:response))
   end
 
   test "should destroy response" do
     assert_difference('Response.count', -1) do
-      delete :destroy, :id => @response.to_param
+      delete :destroy, id: @response
     end
 
     assert_redirected_to responses_path
