@@ -1,7 +1,7 @@
 <%= form_for(@response) do |f| %>
   <% if @response.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h2>
+      <h2><%= pluralize(@response.errors.count, "error") %> prohibited this question from being saved:</h2>
 
       <ul>
       <% @response.errors.full_messages.each do |msg| %>
@@ -12,18 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :question_id %><br />
-    <%= f.text_field :question_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :answer %><br />
-    <%= f.text_field :answer %>
+    <%= f.label "Choose your response:" %>
+    <%= f.radio_button :answer, 1, :checked => true %>
+    <%= f.label "1" %>
+    <%= f.radio_button :answer, 2 %>
+    <%= f.label "2" %>
+    <%= f.radio_button :answer, 3 %>
+    <%= f.label "3" %>
+    <%= f.radio_button :answer, 4 %>
+    <%= f.label "4" %>
+    <%= f.hidden_field :question_id, :value => @question.id %>
+  <br />
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit' %>
   </div>
+  
 <% end %>
+

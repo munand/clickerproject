@@ -2,18 +2,19 @@
 
 <p>
   <b>Question:</b>
-  <%= @response.question_id %>
+  <%= @response.question.question_text %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @response.user_id %>
-</p>
-
-<p>
-  <b>Answer:</b>
+  <b>Chosen Answer:</b>
   <%= @response.answer %>
 </p>
+
+<p>
+  <b>Answered by:</b>
+  <%= @response.user.name %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_response_path(@response) %> |

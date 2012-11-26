@@ -16,9 +16,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @nextquestion = @question.next
     @answers = Answer.where(:question_id => (@question.id))
-    @response = Response.new(params[:response])
-    @response.question_id = @question.id
-    @users = User.all
+    @response = Response.new
 
     respond_to do |format|
       format.html # show.html.erb

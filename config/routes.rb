@@ -1,6 +1,5 @@
 ClickerProject::Application.routes.draw do
   
-
   match 'questions/list' => 'questions#list'
   match 'responses/list' => 'responses#list'
   resources :questions
@@ -10,8 +9,16 @@ ClickerProject::Application.routes.draw do
   get "home/index"
 
   resources :answers
+  
+  controller :sessions do
+    get 'login'   => :new
+    post 'login'  => :create
+    delete 'logout' => :destroy
+  end
 
-
+  controller :questions do
+    get 'list_questions' => :list
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

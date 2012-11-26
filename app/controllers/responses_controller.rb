@@ -41,14 +41,15 @@ class ResponsesController < ApplicationController
   # POST /responses
   # POST /responses.json
   def create
-    @response = Response.new(params[:response])
-
+    @user = User.find(session[:user_id])
+    @response = @user.responses.build(params[:response])
+    
     respond_to do |format|
       if @response.save
         format.html { redirect_to @response, notice: 'Response was successfully created.' }
         format.json { render json: @response, status: :created, location: @response }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new"}
         format.json { render json: @response.errors, status: :unprocessable_entity }
       end
     end
