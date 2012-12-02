@@ -42,16 +42,29 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @user = User.find(session[:user_id])
-    @response = @user.responses.build(params[:response])
+    potential_response = Response.new(params[:response])
+    question_id = potential_response.question.id
+    count = 0
     
-    respond_to do |format|
-      if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
-        format.json { render json: @response, status: :created, location: @response }
-      else
-        format.html { render action: "new"}
-        format.json { render json: @response.errors, status: :unprocessable_entity }
+    @user.responses.each do |response|
+      if response.question.id == question_id
+        count += 1
       end
+    end
+    
+    if count == 0
+      @response = @user.responses.build(params[:response])
+      respond_to do |format|
+        if @response.save
+          format.html { redirect_to @response, notice: 'Response was successfully created.' }
+          format.json { render json: @response, status: :created, location: @response }
+        else
+          format.html { render action: "new"}
+          format.json { render json: @response.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      redirect_to list_questions_url, notice: "Response was already created for Question #{question_id}."
     end
   end
 
