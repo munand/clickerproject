@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :authorize_admin, only: [:index, :new, :edit, :create, :update, :destroy]
+  
   # GET /questions
   # GET /questions.json
   def index

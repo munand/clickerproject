@@ -27,8 +27,12 @@
   </div>
   
   <div>
-  	<%= f.label :password_confirmation, 'Confirm' %>
+  	<%= f.label :password_confirmation, 'Re-type Password' %>
   	<%= f.password_field :password_confirmation, size: 40 %>
+  </div>
+  
+  <div>
+      <%= f.hidden_field :user_type, :value => @user_type %>	
   </div>
   
   <div>
