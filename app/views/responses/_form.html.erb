@@ -14,13 +14,13 @@
   <div class="field">
     <%= f.label "Choose your response:" %>
     <%= f.radio_button :answer, 1, :checked => true %>
-    <%= f.label "1" %>
+    <%= f.label "A" %>
     <%= f.radio_button :answer, 2 %>
-    <%= f.label "2" %>
+    <%= f.label "B" %>
     <%= f.radio_button :answer, 3 %>
-    <%= f.label "3" %>
+    <%= f.label "C" %>
     <%= f.radio_button :answer, 4 %>
-    <%= f.label "4" %>
+    <%= f.label "D" %>
     <%= f.hidden_field :question_id, :value => @question.id %>
   <br />
   </div>

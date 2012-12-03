@@ -13,7 +13,23 @@
 
   <div class="field">
     <%= f.label :question_text %><br />
-    <%= f.text_field :question_text %>
+    <%= f.text_area :question_text, rows: 5, cols: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :question_type %><br />
+    <%= f.select :question_type, Question::QUESTION_TYPES, prompt: 'Select the type of question' %>
+  </div>
+  <div class="field">
+  	<%= f.label "Correct Answer:" %><br />
+    <%= f.radio_button :correct_answer, 1, :checked => true %>
+    <%= f.label "A" %>
+    <%= f.radio_button :correct_answer, 2 %>
+    <%= f.label "B" %>
+    <%= f.radio_button :correct_answer, 3 %>
+    <%= f.label "C" %>
+    <%= f.radio_button :correct_answer, 4 %>
+    <%= f.label "D" %>
+  <br />
   </div>
   <div class="actions">
     <%= f.submit %>

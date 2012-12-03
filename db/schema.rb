@@ -15,15 +15,17 @@ ActiveRecord::Schema.define(:version => 20121203003019) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
-    t.string   "answer_text"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "correct_answer"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "questions", :force => true do |t|
-    t.string   "question_text"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.text     "question_text"
+    t.string   "question_type"
+    t.integer  "correct_answer"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "responses", :force => true do |t|

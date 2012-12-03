@@ -64,7 +64,7 @@ class ResponsesController < ApplicationController
         end
       end
     else
-      redirect_to list_questions_url, notice: "Response was already created for Question #{question_id}."
+      redirect_to list_questions_url, notice: "A response was already created for Question #{question_id}."
     end
   end
 
