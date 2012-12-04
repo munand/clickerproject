@@ -2,7 +2,73 @@
 
 <% @questions.each do |question| %>
     <strong>
-    <%= question.id %> : <%= question.question_text %></strong>
+    <%= question.id %> : <%= question.question_text %>
+      <% @a = question.responses.where(answer: '1').count %>
+      <% @b = question.responses.where(answer: '2').count %>
+      <% @c = question.responses.where(answer: '3').count %>
+      <% @d = question.responses.where(answer: '4').count %>
+
+  <div id= "chart<%= question.id %>" style="height:200px; width:600px; "></div>
+
+  <script type="text/javascript">
+
+  $(document).ready(function()
+  {
+    var bs=  "<%= @a %>";
+    //responses = this.getAttribute("theresponses");
+    var s1 = ["<%= @a %>", "<%= @b %>", "<%= @c %>", "<%= @d %>"];
+    // Can specify a custom tick Array.
+    // Ticks should match up one for each y value (category) in the series.
+    var ticks = ['A', 'B', 'C', 'D'];
+     
+    var plot1 = $.jqplot("chart<%= question.id %>", [s1], 
+    {
+        // The "seriesDefaults" option is an options object that will
+        // be applied to all series in the chart.
+        seriesDefaults:
+        {
+            renderer:$.jqplot.BarRenderer,
+            rendererOptions: {fillToZero: true}
+        },
+        /*
+        // Custom labels for the series are specified with the "label"
+        // option on the series option.  Here a series option object
+        // is specified for each series.
+        series:[
+            {label:'Hotel'},
+            {label:'Event Regristration'},
+            {label:'Airfare'}
+        ],
+        // Show the legend and put it outside the grid, but inside the
+        // plot container, shrinking the grid to accomodate the legend.
+        // A value of "outside" would not shrink the grid and allow
+        // the legend to overflow the container.
+        legend: {
+            show: true,
+            placement: 'outsideGrid'
+        },
+        */
+        axes: 
+        {
+            // Use a category axis on the x axis and use our custom ticks.
+            xaxis: 
+            {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                ticks: ticks
+            },
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            yaxis: 
+            {
+                padMin: 0,
+                tickOptions: {formatString: '%d'}
+            }
+        }
+    });
+});
+  </script>
+   </strong>
+
   <% respcount = 0 %>
   <% totcount = 0.0 %>
       <% @responses.each do |counts| %>
@@ -10,11 +76,12 @@
          <% totcount += 1 %>
        <% end %>
      <% end %>
+
     <% @answers.each do |ans| %>
       <% if ans.question_id == question.id then %>
         <% respcount += 1 %>
         <p style="margin-left: 100px;"><%= respcount %> : <%= ans.answer_text %>   | Responses - 
-		<% intcount = 0 %>
+        <% intcount = 0 %>
       <% @responses.each do |resp| %>
         <% if resp.question_id == question.id %>
          <% intcount += 1 if resp.answer.to_i == respcount %>

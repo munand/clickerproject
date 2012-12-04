@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require_tree
+//= require jquery_ujs
+//= require jqplot
+//= require jqplot/plugins/barRenderer
+//= require jqplot/plugins/pointLabels
+//= require jqplot/plugins/canvasAxisTickRenderer
+//= require jqplot/plugins/enhancedLegendRenderer
+//= require jqplot/plugins/categoryAxisRenderer
