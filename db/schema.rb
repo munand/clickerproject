@@ -21,9 +21,13 @@ ActiveRecord::Schema.define(:version => 20121203003019) do
   end
 
   create_table "questions", :force => true do |t|
-    t.text     "question_text"
+    t.string   "question_text"
     t.string   "question_type"
     t.integer  "correct_answer"
+    t.string   "answer_a"
+    t.string   "answer_b"
+    t.string   "answer_c"
+    t.string   "answer_d"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
@@ -32,8 +36,9 @@ ActiveRecord::Schema.define(:version => 20121203003019) do
     t.integer  "user_id"
     t.integer  "question_id"
     t.integer  "answer"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "short_answer"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

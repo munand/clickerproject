@@ -17,7 +17,6 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @nextquestion = @question.next
-    @answers = Answer.where(:question_id => (@question.id))
     @response = Response.new
 
     respond_to do |format|

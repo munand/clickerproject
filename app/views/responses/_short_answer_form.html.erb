@@ -1,0 +1,23 @@
+<%= form_for(@response) do |f| %>
+  <% if @response.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@response.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @response.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+  	<%= f.label 'Write Your Answer' %><br />
+  	<%= f.text_area :short_answer, row: 5, col: 20  %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+  
+<% end %>
+

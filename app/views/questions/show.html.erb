@@ -4,13 +4,20 @@
 <strong>Question <%= @question.id %> :</strong>
   <%= @question.question_text %>
 </p>
-<% count = 1 %>
-  <% @answers.each do |answer| %>   
-    <p><%= count %>: <%= answer.answer_text %></p>
-    <% count += 1 %>
-  <% end %>
 
-  <%= render :partial => 'responses/form' %>
+<% if @question.question_type == 'multiple choice' %>
+	<p>
+		A. <%= @question.answer_a %><br />
+		B. <%= @question.answer_b %><br />
+		C. <%= @question.answer_c %><br />
+		D. <%= @question.answer_d %><br />
+	</p>
+	<%= render :partial => 'responses/form' %>
+<% else %>
+	<%= render :partial => 'responses/short_answer_form' %>
+<% end %>
+
+  
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back to List', questions_path %> |

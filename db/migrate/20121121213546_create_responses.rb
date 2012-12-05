@@ -4,6 +4,7 @@ class CreateResponses < ActiveRecord::Migration
       t.integer :user_id
       t.integer :question_id
       t.integer :answer
+      t.text    :short_answer
 
       t.timestamps
     end
