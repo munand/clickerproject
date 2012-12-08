@@ -73,9 +73,4 @@ class QuestionTest < ActiveSupport::TestCase
      assert question.errors[:answer_c].any?
   end
 
-  test "valid_with_name_password_and_password_confirmation" do
-     question = Question.create(:question_text => "My awesome question?", :correct_answer => "a", :answer_a => "a", :answer_b => "b", :answer_c => "c", :answer_d => "d")
-     assert question.valid?
-  end
-
 end

@@ -73,9 +73,12 @@ class QuestionTest < ActiveSupport::TestCase
      assert question.errors[:answer_c].any?
   end
 
-  test "valid_with_name_password_and_password_confirmation" do
-     question = Question.create(:question_text => "My awesome question?", :correct_answer => "a", :answer_a => "a", :answer_b => "b", :answer_c => "c", :answer_d => "d")
-     assert question.valid?
+  test "user not valid without a unique name" do
+     user = User.new(:name => users(:newuser).name,
+                     :password_digest => "howru")
+     assert !user.save
+     asser_equal I18n.translate('activerecord.errors.messages.taken'),
+              product.errors[:name].join('; ')
   end
 
 end

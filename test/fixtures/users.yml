@@ -7,3 +7,7 @@ one:
 two:
   name: MyString
   password_digest: MyString
+
+newuser:
+  name: johnny
+  password_digest: hello
