@@ -18,22 +18,14 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "requires_password" do
-     user = User.create(:password => "99999")
+     user = Post.create(:password => "99999")
      assert user.invalid?
      assert user.errors[:name].any?
      assert user.errors[:password_confirmation].any?
   end
-
-  test "requires_password_confirmation" do
-     user = User.create(:password_confirmation => "99999")
-     assert user.invalid?
-     assert user.errors[:name].any?
-     assert user.errors[:password].any?
-  end
-
-  test "valid_with_name_password_and_password_confirmation" do
-     user = User.create(:name => "Munand", :password => "99999", :password_confirmation => "99999")
-     assert user.valid?
+test "valid with title and body" do
+user = Post.create(:title => "My Great Post", :body => "This is an awesome user.")
+assert user.valid?
 end
 
 end

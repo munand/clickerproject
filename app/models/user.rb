@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :password, :password_confirmation, :user_type
   validates :name, presence: true, uniqueness: true
   validates :user_type, inclusion: USER_TYPES
-  validates :password, presence: true
+  validates :password, :password_confirmation, presence: true
   validates_length_of :password, :within => 5..15, :too_short => "length is too short and should be atleast 5", :too_long => "length should not be more than 15"
    
   has_many :responses, dependent: :destroy
