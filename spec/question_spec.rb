@@ -28,7 +28,7 @@ describe Question do
 		@question.answer_d = ''
 		@question.should_not be_valid
 	end
-	it "should be valid" do
+	it "should not be valid" do
 		@question.should_not be_valid
 	end
 	def valid_attributes
