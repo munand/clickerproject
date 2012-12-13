@@ -3,6 +3,8 @@ require 'test_helper'
 class ResponsesControllerTest < ActionController::TestCase
   setup do
     @myresponse = responses(:one)
+    @user = users(:one)
+    @question = questions(:one)
   end
 
   test "should get index" do
@@ -18,10 +20,10 @@ class ResponsesControllerTest < ActionController::TestCase
 
   test "should create response" do
     assert_difference('Response.count') do
-      post :create, response: { answer: @myresponse.answer, question_id: @myresponse.question_id, user_id: @myresponse.user_id }
+      post :create, question_id: @question.id, user_id: @user.id, response: { answer: @myresponse.answer, question_id: @myresponse.question_id, user_id: @myresponse.user_id }
     end
 
-    assert_redirected_to response_path(assigns(:response))
+    assert_redirected_to response_path(assigns(:question))
   end
 
   test "should show response" do
