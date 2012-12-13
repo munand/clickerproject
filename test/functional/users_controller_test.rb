@@ -27,7 +27,7 @@ class UsersControllerTest < ActionController::TestCase
       post :create, :user => @update
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to users_path(assigns(:user))
   end
 
   test "should show user" do

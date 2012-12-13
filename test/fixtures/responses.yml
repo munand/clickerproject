@@ -2,10 +2,10 @@
 
 one:
   user_id: 1
-  question_id: 1
-  answer: 1
+  question_id: 2
+  answer: 3
 
 two:
   user_id: 1
-  question_id: 1
-  answer: 1
+  question_id: 2
+  answer: 3
