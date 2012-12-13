@@ -46,4 +46,9 @@ class QuestionsControllerTest < ActionController::TestCase
 
     assert_redirected_to questions_path
   end
+  
+  test "should route to questions" do
+    assert_routing "/questions/list", {:controller => "questions", :action => "list"}
+    assert_routing "/questions/1/edit", {:controller => "questions", :action => "edit", :id => "1"}
+  end
 end

@@ -3,9 +3,9 @@
 one:
   user_id: 1
   question_id: 2
-  answer: 3
+  answer: answertext
 
 two:
   user_id: 1
   question_id: 2
-  answer: 3
+  answer: answertext

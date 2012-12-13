@@ -18,7 +18,7 @@ class QuestionsControllerTest < ActionController::TestCase
 
   test "should create question" do
     assert_difference('Question.count') do
-      post :create, question: @question.attributes
+      post :create, question_id: @question.id, question: @question.attributes
     end
 
     assert_redirected_to questions_path(assigns(:question))
@@ -45,5 +45,10 @@ class QuestionsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to questions_path
+  end
+  
+  test "should route to questions" do
+    assert_routing "/questions/list", {:controller => "questions", :action => "list"}
+    assert_routing "/questions/1/edit", {:controller => "questions", :action => "edit", :id => "1"}
   end
 end
